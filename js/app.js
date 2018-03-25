@@ -12,6 +12,9 @@
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
+
+    'use strict';
+
     var currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
@@ -36,3 +39,26 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+const DOMString = {
+    container: $('.deck')
+};
+
+const cards = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-paper-plane-o', 'fa-cube'];
+
+function creatUI(){
+    let cardsShuffel = shuffle(cards);
+    cardsShuffel.forEach(function(cur){
+        DOMString.container.append('<li class="card"><i class="fa ' + cur + '"></i></li>');
+    });
+}
+
+creatUI();
+
+
+
+
+
+
+
+
