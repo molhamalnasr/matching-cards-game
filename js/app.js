@@ -40,12 +40,19 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+
+//ALL VARIABLES
 const DOMString = {
-    container: $('.deck')
+    container: $('.deck'),
+    card: '.card',
+    cardOpend: [],
+    gameIsStarted: false
 };
 
 const cards = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-paper-plane-o', 'fa-cube'];
 
+
+//FUNCTIONS
 function creatUI(){
     let cardsShuffel = shuffle(cards);
     cardsShuffel.forEach((cur) => {
@@ -53,12 +60,22 @@ function creatUI(){
     });
 }
 
+function startGame(){
+    $('.card').on('click', function(){
+        $(this).toggleClass('open show');
+    });
+}
+
+
+//CALL FUNCTIONS
 creatUI();
+startGame();
 
 
 
 
 
-
-
-
+//TOTEST MY WORK
+function test(){
+    console.log('test');
+}
