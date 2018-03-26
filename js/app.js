@@ -46,7 +46,9 @@ const DOMString = {
     container: $('.deck'),
     card: '.card',
     cardOpend: [],
-    gameIsStarted: false
+    gameIsStarted: false,
+    matches: 0,
+    moves: 0
 };
 
 const cards = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-paper-plane-o', 'fa-cube'];
@@ -61,8 +63,46 @@ function creatUI(){
 }
 
 function startGame(){
-    $('.card').on('click', function(){
+    //flip Card when user click
+    $(DOMString.card).on('click', function(){
+        //ADD Calsses
         $(this).toggleClass('flipInY open show');
+        //push the opend card into the Array
+        DOMString.cardOpend.push($(this));
+        //Start The game
+        DOMString.gameIsStarted = true;
+        //Check if there are a match
+        if(DOMString.cardOpend.length === 2){
+            if(DOMString.cardOpend[0][0].firstChild.classList[1] === DOMString.cardOpend[1][0].firstChild.classList[1]){
+                DOMString.cardOpend[0][0].classList.add('match');
+                DOMString.cardOpend[1][0].classList.add('match');
+
+                //clear cardOpend array
+                DOMString.cardOpend = [];
+
+                //Increase Matches
+                DOMString.matches++;
+
+                //Increase Moves
+                DOMString.moves++;
+            }else{
+                //add wrong class to opend cards
+                DOMString.cardOpend[0][0].classList.add('wrong');
+                DOMString.cardOpend[1][0].classList.add('wrong');
+
+                //reclose all opend cards
+                setTimeout(function(){
+                    $(DOMString.card).removeClass('open show wrong');
+                    $(DOMString.card).removeClass('open show wrong');
+
+                    //set cardOpend array to empty
+                    DOMString.cardOpend = [];
+                }, 1000);
+
+                //Increase Moves
+                DOMString.moves++;
+            }
+        }
     });
 }
 
