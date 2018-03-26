@@ -62,7 +62,7 @@ function creatUI(){
 
 function startGame(){
     $('.card').on('click', function(){
-        $(this).toggleClass('open show');
+        $(this).toggleClass('flipInY open show');
     });
 }
 
