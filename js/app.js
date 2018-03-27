@@ -78,9 +78,6 @@ function startGame(){
                 DOMString.cardOpend[0][0].classList.add('match');
                 DOMString.cardOpend[1][0].classList.add('match');
 
-                //clear cardOpend array
-                DOMString.cardOpend = [];
-
                 //Increase Matches
                 DOMString.matches++;
 
@@ -89,6 +86,9 @@ function startGame(){
 
                 //CALL WINNER FUNCTION
                 isWinner();
+
+                //CALL clearMatchArray
+                clearMatcheArray();
             }else{
                 //add wrong class to opend cards
                 DOMString.cardOpend[0][0].classList.add('wrong');
@@ -114,6 +114,11 @@ function isWinner(){
     if(DOMString.matches === 8){
         $(DOMString.winner).show();
     }
+}
+
+function clearMatcheArray(){
+    //clear cardOpend array
+    DOMString.cardOpend = [];
 }
 
 
