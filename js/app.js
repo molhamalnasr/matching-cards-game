@@ -48,7 +48,8 @@ const DOMString = {
     cardOpend: [],
     gameIsStarted: false,
     matches: 0,
-    moves: 0
+    moves: 0,
+    winner: '.winner'
 };
 
 const cards = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-paper-plane-o', 'fa-cube'];
@@ -85,6 +86,9 @@ function startGame(){
 
                 //Increase Moves
                 DOMString.moves++;
+
+                //CALL WINNER FUNCTION
+                isWinner();
             }else{
                 //add wrong class to opend cards
                 DOMString.cardOpend[0][0].classList.add('wrong');
@@ -104,6 +108,12 @@ function startGame(){
             }
         }
     });
+}
+
+function isWinner(){
+    if(DOMString.matches === 8){
+        $(DOMString.winner).show();
+    }
 }
 
 
