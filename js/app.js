@@ -49,7 +49,8 @@ const DOMString = {
     gameIsStarted: false,
     matches: 0,
     moves: 0,
-    winner: '.winner'
+    winner: '.winner',
+    stars: '.stars'
 };
 
 const cards = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-paper-plane-o', 'fa-cube'];
@@ -103,10 +104,11 @@ function startGame(){
                     DOMString.cardOpend = [];
                 }, 1000);
 
-                //Increase Moves
-                DOMString.moves++;
+                //CALL clearMatchArray
+                clearMatcheArray();
             }
         }
+        score();
     });
 }
 
@@ -121,6 +123,19 @@ function clearMatcheArray(){
     DOMString.cardOpend = [];
 }
 
+function score(){
+    const stars = document.querySelector(DOMString.stars),
+          firstStar = stars.getElementsByTagName('i')[0],
+          secondStar = stars.getElementsByTagName('i')[1],
+          thirdStar = stars.getElementsByTagName('i')[2];
+    if(DOMString.moves >= 9 && DOMString.moves <= 12){
+        firstStar.style.color = '#000';
+    }else if(DOMString.moves >= 13 && DOMString.moves <= 16){
+        secondStar.style.color = '#000';
+    }else if(DOMString.moves > 16){
+        thirdStar.style.color = '#000';
+    }
+}
 
 //CALL FUNCTIONS
 creatUI();
