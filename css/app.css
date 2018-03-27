@@ -121,11 +121,18 @@ h1 {
     z-index: 999;
     -webkit-animation-name: popup;
     -webkit-animation-duration: 0.5s;
+    -moz-animation-name: popup;
+    -moz-animation-duration: 0.5s;
     animation-name: popup;
     animation-duration: 0.5s;
 }
 
 @-webkit-keyframes popup {
+    0% { opacity: 0; -webkit-transform: scale(0.5); }
+    100% { opacity: 1; -webkit-transform: scale(1); }
+}
+
+@-moz-keyframes popup {
     0% { opacity: 0; -webkit-transform: scale(0.5); }
     100% { opacity: 1; -webkit-transform: scale(1); }
 }
