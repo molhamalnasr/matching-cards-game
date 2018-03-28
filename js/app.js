@@ -80,43 +80,7 @@ function gameIsStarted(){
         //Start The game
         JSVar.gameIsStarted = true;
         //Check if there are a match
-        if(JSVar.cardOpend.length === 2){
-            if(JSVar.cardOpend[0][0].firstChild.classList[1] === JSVar.cardOpend[1][0].firstChild.classList[1]){
-                JSVar.cardOpend[0][0].classList.add('match');
-                JSVar.cardOpend[1][0].classList.add('match');
-
-                //Increase Matches
-                matchIsFound();
-
-                //Increase Moves
-                increaseMoves();
-
-                //CALL WINNER FUNCTION
-                isWinner();
-
-                //CALL clearMatchArray
-                clearMatcheArray();
-            }else{
-                //add wrong class to opend cards
-                JSVar.cardOpend[0][0].classList.add('wrong');
-                JSVar.cardOpend[1][0].classList.add('wrong');
-
-                //reclose all opend cards
-                setTimeout(function(){
-                    $(DOMString.card).removeClass('open show wrong');
-                    $(DOMString.card).removeClass('open show wrong');
-
-                    //set cardOpend array to empty
-                    JSVar.cardOpend = [];
-                }, 1000);
-
-                //CALL clearMatchArray
-                clearMatcheArray();
-
-                //Increase Moves
-                increaseMoves();
-            }
-        }
+        matchesCheck();
         score();
     });
 }
@@ -177,6 +141,46 @@ function startNewGame(){
 //increase matches
 function matchIsFound(){
     JSVar.matches++;
+}
+
+function matchesCheck(){
+    if(JSVar.cardOpend.length === 2){
+        if(JSVar.cardOpend[0][0].firstChild.classList[1] === JSVar.cardOpend[1][0].firstChild.classList[1]){
+            JSVar.cardOpend[0][0].classList.add('match');
+            JSVar.cardOpend[1][0].classList.add('match');
+
+            //Increase Matches
+            matchIsFound();
+
+            //Increase Moves
+            increaseMoves();
+
+            //CALL WINNER FUNCTION
+            isWinner();
+
+            //CALL clearMatchArray
+            clearMatcheArray();
+        }else{
+            //add wrong class to opend cards
+            JSVar.cardOpend[0][0].classList.add('wrong');
+            JSVar.cardOpend[1][0].classList.add('wrong');
+
+            //reclose all opend cards
+            setTimeout(function(){
+                $(DOMString.card).removeClass('open show wrong');
+                $(DOMString.card).removeClass('open show wrong');
+
+                //set cardOpend array to empty
+                JSVar.cardOpend = [];
+            }, 1000);
+
+            //CALL clearMatchArray
+            clearMatcheArray();
+
+            //Increase Moves
+            increaseMoves();
+        }
+    }
 }
 
 //Restart game event listener
