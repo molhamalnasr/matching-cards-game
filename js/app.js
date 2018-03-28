@@ -45,13 +45,16 @@ function shuffle(array) {
 const DOMString = {
     container: $('.deck'),
     card: '.card',
-    cardOpend: [],
     gameIsStarted: false,
-    matches: 0,
-    moves: 0,
     winner: '.winner',
     stars: '.stars'
 };
+
+const JSVar = {
+    cardOpend: [],
+    matches: 0,
+    moves: 0,
+}
 
 const cards = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-paper-plane-o', 'fa-cube'];
 
@@ -70,20 +73,20 @@ function startGame(){
         //ADD Calsses
         $(this).toggleClass('flipInY open show');
         //push the opend card into the Array
-        DOMString.cardOpend.push($(this));
+        JSVar.cardOpend.push($(this));
         //Start The game
         DOMString.gameIsStarted = true;
         //Check if there are a match
-        if(DOMString.cardOpend.length === 2){
-            if(DOMString.cardOpend[0][0].firstChild.classList[1] === DOMString.cardOpend[1][0].firstChild.classList[1]){
-                DOMString.cardOpend[0][0].classList.add('match');
-                DOMString.cardOpend[1][0].classList.add('match');
+        if(JSVar.cardOpend.length === 2){
+            if(JSVar.cardOpend[0][0].firstChild.classList[1] === JSVar.cardOpend[1][0].firstChild.classList[1]){
+                JSVar.cardOpend[0][0].classList.add('match');
+                JSVar.cardOpend[1][0].classList.add('match');
 
                 //Increase Matches
-                DOMString.matches++;
+                JSVar.matches++;
 
                 //Increase Moves
-                DOMString.moves++;
+                JSVar.moves++;
 
                 //CALL WINNER FUNCTION
                 isWinner();
@@ -92,8 +95,8 @@ function startGame(){
                 clearMatcheArray();
             }else{
                 //add wrong class to opend cards
-                DOMString.cardOpend[0][0].classList.add('wrong');
-                DOMString.cardOpend[1][0].classList.add('wrong');
+                JSVar.cardOpend[0][0].classList.add('wrong');
+                JSVar.cardOpend[1][0].classList.add('wrong');
 
                 //reclose all opend cards
                 setTimeout(function(){
@@ -101,7 +104,7 @@ function startGame(){
                     $(DOMString.card).removeClass('open show wrong');
 
                     //set cardOpend array to empty
-                    DOMString.cardOpend = [];
+                    JSVar.cardOpend = [];
                 }, 1000);
 
                 //CALL clearMatchArray
@@ -113,14 +116,14 @@ function startGame(){
 }
 
 function isWinner(){
-    if(DOMString.matches === 8){
+    if(JSVar.matches === 8){
         $(DOMString.winner).show();
     }
 }
 
 function clearMatcheArray(){
     //clear cardOpend array
-    DOMString.cardOpend = [];
+    JSVar.cardOpend = [];
 }
 
 function score(){
@@ -128,11 +131,11 @@ function score(){
           firstStar = stars.getElementsByTagName('i')[0],
           secondStar = stars.getElementsByTagName('i')[1],
           thirdStar = stars.getElementsByTagName('i')[2];
-    if(DOMString.moves >= 9 && DOMString.moves <= 12){
+    if(JSVar.moves >= 9 && JSVar.moves <= 12){
         firstStar.style.color = '#000';
-    }else if(DOMString.moves >= 13 && DOMString.moves <= 16){
+    }else if(JSVar.moves >= 13 && JSVar.moves <= 16){
         secondStar.style.color = '#000';
-    }else if(DOMString.moves > 16){
+    }else if(JSVar.moves > 16){
         thirdStar.style.color = '#000';
     }
 }
