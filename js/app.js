@@ -48,7 +48,8 @@ const DOMString = {
     winner: '.winner',
     stars: '.stars',
     moves: '.moves',
-    movesString: '.movesString'
+    movesString: '.movesString',
+    restart: '.restart'
 };
 
 const JSVar = {
@@ -178,9 +179,14 @@ function matchIsFound(){
     JSVar.matches++;
 }
 
+//Restart game event listener
+$(DOMString.restart).on('click', startNewGame);
+
+
 //CALL FUNCTIONS
 startNewGame();
 gameIsStarted();
+
 
 
 
