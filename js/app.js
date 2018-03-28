@@ -49,18 +49,24 @@ const DOMString = {
     stars: '.stars',
     moves: '.moves',
     movesString: '.movesString',
-    restart: '.restart'
+    restart: '.restart',
+    timer: '#timer'
 };
 
 const JSVar = {
     cardOpend: [],
     matches: 0,
     moves: 0,
-    gameIsStarted: false
+    gameIsStarted: false,
+    timer: '',
+    minutes: '',
+    seconds: '',
+    oneMinute: 60
 }
 
 const cards = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-paper-plane-o', 'fa-cube'];
 
+const displayTimer = document.querySelector(DOMString.timer);
 
 //FUNCTIONS
 function creatUI(){
@@ -186,10 +192,31 @@ function matchesCheck(){
 //Restart game event listener
 $(DOMString.restart).on('click', startNewGame);
 
+//creat countDown timer
+function countDown(duration, display){
+    JSVar.timer = duration;
+    setInterval(function(){
+        JSVar.minutes = parseInt(JSVar.timer / 60, 10);
+        JSVar.seconds = parseInt(JSVar.timer % 60, 10);
+
+        JSVar.minutes = JSVar.minutes < 10 ? '0' + JSVar.minutes : JSVar.minutes;
+        JSVar.seconds = JSVar.seconds < 10 ? '0' + JSVar.seconds : JSVar.seconds;
+
+        display.textContent = JSVar.minutes + ':' + JSVar.seconds;
+
+        if(--JSVar.timer < 0){
+            document.querySelector(DOMString.timer).textContent = '00:00'
+        }
+    }, 1000);
+}
+
 
 //CALL FUNCTIONS
 startNewGame();
 gameIsStarted();
+countDown(JSVar.oneMinute, displayTimer);
+
+
 
 
 
