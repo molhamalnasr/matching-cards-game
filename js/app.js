@@ -68,7 +68,7 @@ function creatUI(){
     });
 }
 
-function startGame(){
+function gameIsStarted(){
     //flip Card when user click
     $(DOMString.card).on('click', function(){
         //ADD Calsses
@@ -152,7 +152,7 @@ function increaseMoves(){
 
 //CALL FUNCTIONS
 creatUI();
-startGame();
+gameIsStarted();
 
 
 
