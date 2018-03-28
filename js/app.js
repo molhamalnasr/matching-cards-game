@@ -61,7 +61,8 @@ const JSVar = {
     timer: '',
     minutes: '',
     seconds: '',
-    oneMinute: 60
+    oneMinute: 60,
+    clicks: 0
 }
 
 const cards = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-paper-plane-o', 'fa-cube'];
@@ -190,7 +191,11 @@ function matchesCheck(){
 }
 
 //Restart game event listener
-$(DOMString.restart).on('click', startNewGame);
+function restartGame() {
+    $(DOMString.restart).on("click", function() {
+        location.reload()
+    });
+}
 
 //creat countDown timer
 function countDown(duration, display){
@@ -210,11 +215,21 @@ function countDown(duration, display){
     }, 1000);
 }
 
+function startTimer() {
+    $(DOMString.card).on("click", function() {
+        JSVar.clicks += 1;
+        if (JSVar.clicks === 1) {
+            countDown(JSVar.oneMinute, displayTimer);
+        }
+    })
+}
+
 
 //CALL FUNCTIONS
 startNewGame();
 gameIsStarted();
-countDown(JSVar.oneMinute, displayTimer);
+restartGame();
+startTimer();
 
 
 
