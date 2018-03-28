@@ -45,7 +45,6 @@ function shuffle(array) {
 const DOMString = {
     container: '.deck',
     card: '.card',
-    gameIsStarted: false,
     winner: '.winner',
     stars: '.stars',
     moves: '.moves',
@@ -55,7 +54,8 @@ const DOMString = {
 const JSVar = {
     cardOpend: [],
     matches: 0,
-    moves: 0
+    moves: 0,
+    gameIsStarted: false
 }
 
 const cards = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-paper-plane-o', 'fa-cube'];
@@ -77,7 +77,7 @@ function gameIsStarted(){
         //push the opend card into the Array
         JSVar.cardOpend.push($(this));
         //Start The game
-        DOMString.gameIsStarted = true;
+        JSVar.gameIsStarted = true;
         //Check if there are a match
         if(JSVar.cardOpend.length === 2){
             if(JSVar.cardOpend[0][0].firstChild.classList[1] === JSVar.cardOpend[1][0].firstChild.classList[1]){
@@ -165,6 +165,7 @@ function startNewGame(){
     JSVar.moves = 0;
     JSVar.matches = 0;
     JSVar.cardOpend = [];
+    JSVar.gameIsStarted = false;
 }
 
 //increase matches
