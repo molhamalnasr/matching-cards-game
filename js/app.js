@@ -73,7 +73,7 @@ function gameIsStarted(){
     //flip Card when user click
     $(DOMString.card).on('click', function(){
         //ADD Calsses
-        $(this).toggleClass('flipInY open show');
+        $(this).toggleClass('open show');
         //push the opend card into the Array
         JSVar.cardOpend.push($(this));
         //Start The game
