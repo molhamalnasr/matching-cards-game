@@ -47,7 +47,8 @@ const DOMString = {
     card: '.card',
     gameIsStarted: false,
     winner: '.winner',
-    stars: '.stars'
+    stars: '.stars',
+    moves: '.moves'
 };
 
 const JSVar = {
@@ -86,7 +87,7 @@ function startGame(){
                 JSVar.matches++;
 
                 //Increase Moves
-                JSVar.moves++;
+                increaseMoves();
 
                 //CALL WINNER FUNCTION
                 isWinner();
@@ -109,6 +110,9 @@ function startGame(){
 
                 //CALL clearMatchArray
                 clearMatcheArray();
+
+                //Increase Moves
+                increaseMoves();
             }
         }
         score();
@@ -138,6 +142,12 @@ function score(){
     }else if(JSVar.moves > 16){
         thirdStar.style.color = '#000';
     }
+}
+
+//Increase Moves
+function increaseMoves(){
+    JSVar.moves++;
+    $(DOMString.moves).text(JSVar.moves);
 }
 
 //CALL FUNCTIONS
