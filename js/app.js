@@ -149,6 +149,11 @@ function score(){
 function increaseMoves(){
     JSVar.moves++;
     $(DOMString.moves).text(JSVar.moves);
+    if(JSVar.moves === 1){
+        document.querySelector(DOMString.movesString).textContent = 'Move';
+    }else{
+        document.querySelector(DOMString.movesString).textContent = 'Moves';
+    }
 }
 
 //start new game
