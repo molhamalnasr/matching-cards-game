@@ -48,13 +48,14 @@ const DOMString = {
     gameIsStarted: false,
     winner: '.winner',
     stars: '.stars',
-    moves: '.moves'
+    moves: '.moves',
+    movesString: '.movesString'
 };
 
 const JSVar = {
     cardOpend: [],
     matches: 0,
-    moves: 0,
+    moves: 0
 }
 
 const cards = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-paper-plane-o', 'fa-cube'];
@@ -84,7 +85,7 @@ function gameIsStarted(){
                 JSVar.cardOpend[1][0].classList.add('match');
 
                 //Increase Matches
-                JSVar.matches++;
+                matchIsFound();
 
                 //Increase Moves
                 increaseMoves();
@@ -150,8 +151,29 @@ function increaseMoves(){
     $(DOMString.moves).text(JSVar.moves);
 }
 
+//start new game
+function startNewGame(){
+    //clear all cards
+    document.querySelector(DOMString.container).innerHTML = '';
+    //creat new deck of random cards
+    creatUI();
+    //set moves string to zero
+    document.querySelector(DOMString.moves).textContent = 0;
+    //remove all classes
+    $(DOMString.card).removeClass('open show wrong match');
+    //reset all variables
+    JSVar.moves = 0;
+    JSVar.matches = 0;
+    JSVar.cardOpend = [];
+}
+
+//increase matches
+function matchIsFound(){
+    JSVar.matches++;
+}
+
 //CALL FUNCTIONS
-creatUI();
+startNewGame();
 gameIsStarted();
 
 
