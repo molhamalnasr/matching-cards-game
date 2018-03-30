@@ -63,7 +63,7 @@ const JSVar = {
     seconds: '',
     oneMinute: 60,
     clicks: 0
-}
+};
 
 const cards = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cube', 'fa-anchor', 'fa-leaf', 'fa-bicycle', 'fa-diamond', 'fa-bomb', 'fa-leaf', 'fa-bomb', 'fa-bolt', 'fa-bicycle', 'fa-paper-plane-o', 'fa-cube'];
 
@@ -193,7 +193,7 @@ function matchesCheck(){
 //Restart game event listener
 function restartGame() {
     $(DOMString.restart).on("click", function() {
-        location.reload()
+        location.reload();
     });
 }
 
@@ -210,7 +210,7 @@ function countDown(duration, display){
         display.textContent = JSVar.minutes + ':' + JSVar.seconds;
 
         if(--JSVar.timer < 0){
-            document.querySelector(DOMString.timer).textContent = '00:00'
+            document.querySelector(DOMString.timer).textContent = '00:00';
         }
     }, 1000);
 }
