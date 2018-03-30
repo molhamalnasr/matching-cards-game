@@ -92,14 +92,16 @@ h1 {
     position: relative;
 }
 
-.score-panel .stars {
+.score-panel .stars,
+.winner .stars {
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
 }
 
-.score-panel .stars li {
+.score-panel .stars li,
+.summary .stars li {
     list-style: none;
     display: inline-block;
 }
@@ -107,6 +109,14 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link:visited {
+    color: #fff;
 }
 
 .winner {
@@ -143,7 +153,8 @@ h1 {
     100% { opacity: 1; -webkit-transform: scale(1); }
 }
 
-#title {
+#title,
+.summary {
     transform-origin: 50% 50%;
     font-size: 50px;
     font-family: 'Sigmar One', cursive;
@@ -155,6 +166,31 @@ h1 {
     width: 100%;
     user-select: none;
     -webkit-user-select: none;
+}
+
+.summary {
+    font-size: 25px;
+    top: 35%;
+}
+
+.summary p:nth-child(2){
+    display: inline-block;
+}
+
+.buttonContainer {
+    display: block;
+    padding: 15px;
+    width: 280px;
+    margin: 0 auto;
+    background: #fff;
+    color: #3da1d1;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    box-shadow: 10px 10px 10px #000;
+}
+
+.buttonContainer:hover {
+    box-shadow: 5px 5px 10px #000;
 }
 
 .stars li {

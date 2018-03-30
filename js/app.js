@@ -50,13 +50,17 @@ const DOMString = {
     moves: '.moves',
     movesString: '.movesString',
     restart: '.restart',
-    timer: '#timer'
+    timer: '#timer',
+    summarySec: '.summarySec',
+    summaryMoves: '.summaryMoves',
+    summaryScore: '.summaryScore'
 };
 
 const JSVar = {
     cardOpend: [],
     matches: 0,
     moves: 0,
+    summaryRate: 0,
     gameIsStarted: false,
     timer: '',
     minutes: '',
@@ -95,6 +99,9 @@ function gameIsStarted(){
 function isWinner(){
     if(JSVar.matches === 8){
         $(DOMString.winner).show();
+        $(DOMString.summarySec).text(60 - JSVar.seconds);
+        $(DOMString.summaryMoves).text(JSVar.moves);
+        $(DOMString.summaryScore).text(JSVar.summaryRate);
     }
 }
 
@@ -109,11 +116,11 @@ function score(){
           secondStar = stars.getElementsByTagName('i')[1],
           thirdStar = stars.getElementsByTagName('i')[2];
     if(JSVar.moves >= 9 && JSVar.moves <= 12){
+        JSVar.summaryRate = 2;
         firstStar.style.color = '#000';
     }else if(JSVar.moves >= 13 && JSVar.moves <= 16){
+        JSVar.summaryRate = 1;
         secondStar.style.color = '#000';
-    }else if(JSVar.moves > 16){
-        thirdStar.style.color = '#000';
     }
 }
 
@@ -200,19 +207,20 @@ function restartGame() {
 //creat countDown timer
 function countDown(duration, display){
     JSVar.timer = duration;
-    setInterval(function(){
-        JSVar.minutes = parseInt(JSVar.timer / 60, 10);
-        JSVar.seconds = parseInt(JSVar.timer % 60, 10);
+    var timerFunction = setInterval(function(){
+            JSVar.minutes = parseInt(JSVar.timer / 60, 10);
+            JSVar.seconds = parseInt(JSVar.timer % 60, 10);
 
-        JSVar.minutes = JSVar.minutes < 10 ? '0' + JSVar.minutes : JSVar.minutes;
-        JSVar.seconds = JSVar.seconds < 10 ? '0' + JSVar.seconds : JSVar.seconds;
+            JSVar.minutes = JSVar.minutes < 10 ? '0' + JSVar.minutes : JSVar.minutes;
+            JSVar.seconds = JSVar.seconds < 10 ? '0' + JSVar.seconds : JSVar.seconds;
 
-        display.textContent = JSVar.minutes + ':' + JSVar.seconds;
+            display.textContent = JSVar.minutes + ':' + JSVar.seconds;
 
-        if(--JSVar.timer < 0){
-            document.querySelector(DOMString.timer).textContent = '00:00';
-        }
-    }, 1000);
+            if(--JSVar.timer < 0 || JSVar.matches === 8){
+                clearInterval(timerFunction);
+            }
+
+        }, 1000);
 }
 
 function startTimer() {
