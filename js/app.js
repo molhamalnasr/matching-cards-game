@@ -73,7 +73,7 @@ const displayTimer = document.querySelector(DOMString.timer);
 function creatUI(){
     let cardsShuffel = shuffle(cards);
     cardsShuffel.forEach((cur) => {
-        $(DOMString.container).append('<li class="card"><i class="fa ' + cur + '"></i></li>');
+        $(DOMString.container).append(`<li class="card"><i class="fa ${cur}"></i></li>`);
     });
 }
 
