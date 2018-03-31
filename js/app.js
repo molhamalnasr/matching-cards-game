@@ -74,6 +74,8 @@ const cards = ['fa-diamond', 'fa-paper-plane-o', 'fa-anchor', 'fa-bolt', 'fa-cub
 
 const displayTimer = document.querySelector(DOMString.timer);
 
+
+
 //FUNCTIONS
 function creatUI(){
     let cardsShuffel = shuffle(cards);
@@ -93,13 +95,16 @@ function gameIsStarted(){
         JSVar.gameIsStarted = true;
         //Check if there are a match
         matchesCheck();
+        //Update the score
         score();
     });
 }
 
 function isWinner(){
     if(JSVar.matches === 8){
+        //display the winner DIV
         $(DOMString.winner).show();
+        //update the winner text
         $(DOMString.summarySec).text(60 - JSVar.seconds);
         $(DOMString.summaryMoves).text(JSVar.moves);
         $(DOMString.summaryScore).text(JSVar.summaryRate);
@@ -107,6 +112,7 @@ function isWinner(){
 }
 
 function gameOver(){
+    //display the loser DIV
     $(DOMString.loser).show();
 }
 
@@ -116,10 +122,12 @@ function clearMatcheArray(){
 }
 
 function score(){
+    //select all the stars
     const stars = document.querySelector(DOMString.stars),
           firstStar = stars.getElementsByTagName('i')[0],
           secondStar = stars.getElementsByTagName('i')[1],
           thirdStar = stars.getElementsByTagName('i')[2];
+    //if statment to update the score
     if(JSVar.moves >= 9 && JSVar.moves <= 12){
         JSVar.summaryRate = 2;
         firstStar.style.color = '#000';
@@ -131,8 +139,10 @@ function score(){
 
 //Increase Moves
 function increaseMoves(){
+    //update the moves
     JSVar.moves++;
     $(DOMString.moves).text(JSVar.moves);
+    //add singular case
     if(JSVar.moves === 1){
         document.querySelector(DOMString.movesString).textContent = 'Move';
     }else{
@@ -146,6 +156,9 @@ function startNewGame(){
     document.querySelector(DOMString.container).innerHTML = '';
     //creat new deck of random cards
     creatUI();
+
+    /* Not Necessary any more while i'm using location.reload() to restart the game
+    *
     //set moves string to zero
     document.querySelector(DOMString.moves).textContent = 0;
     //remove all classes
@@ -155,6 +168,8 @@ function startNewGame(){
     JSVar.matches = 0;
     JSVar.cardOpend = [];
     JSVar.gameIsStarted = false;
+    *
+    */
 }
 
 //increase matches
@@ -183,6 +198,16 @@ function matchesCheck(){
 
             //CALL clearMatchArray
             clearMatcheArray();
+
+            //reclose all opend cards
+            setTimeout(function(){
+
+                //Remove opendCards classes
+                removeClasses();
+
+                //set cardOpend array to empty
+                clearMatcheArray();
+            }, 500);
         }else{
             //add wrong class to opend cards
             JSVar.cardOpend[0][0].classList.add('shake');
@@ -190,11 +215,12 @@ function matchesCheck(){
 
             //reclose all opend cards
             setTimeout(function(){
-                $(DOMString.card).removeClass('open show shake flipInY pulse');
-                $(DOMString.card).removeClass('open show shake flipInY pulse');
+
+                //Remove opendCards classes
+                removeClasses();
 
                 //set cardOpend array to empty
-                JSVar.cardOpend = [];
+                clearMatcheArray();
             }, 1000);
 
             //CALL clearMatchArray
@@ -211,6 +237,11 @@ function restartGame() {
     $(DOMString.restart).on("click", function() {
         location.reload();
     });
+}
+
+//Remove Classes
+function removeClasses(){
+    $(DOMString.card).removeClass('open show shake flipInY pulse');
 }
 
 //creat countDown timer
