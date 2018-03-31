@@ -10,6 +10,12 @@ You can try the game from [here](https://molhamalnasr.github.io/matching-cards-g
 
 <hr>
 
+### How to setup the Game
+
+basically you can clone this repo to your machine and open index.html in your browser.
+
+Hint: You should have a browser supports JavaScript.
+
 ### Resources
 
 We used in this Game HTML, CSS, JavaScript and jQuery
