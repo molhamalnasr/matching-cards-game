@@ -77,16 +77,17 @@ const displayTimer = document.querySelector(DOMString.timer);
 
 
 //FUNCTIONS
-function creatUI(){
+function creatUI() {
+    'use strict';
     let cardsShuffel = shuffle(cards);
     cardsShuffel.forEach((cur) => {
         $(DOMString.container).append(`<li class="card"><i class="fa ${cur}"></i></li>`);
     });
 }
 
-function gameIsStarted(){
+function gameIsStarted() {
     //flip Card when user click
-    $(DOMString.card).on('click', function(){
+    $(DOMString.card).on('click', function() {
         //ADD Calsses
         $(this).toggleClass('open show flipInY');
         //push the opend card into the Array
@@ -100,7 +101,7 @@ function gameIsStarted(){
     });
 }
 
-function isWinner(){
+function isWinner() {
     if(JSVar.matches === 8){
         //display the winner DIV
         $(DOMString.winner).show();
@@ -111,17 +112,17 @@ function isWinner(){
     }
 }
 
-function gameOver(){
+function gameOver() {
     //display the loser DIV
     $(DOMString.loser).show();
 }
 
-function clearMatcheArray(){
+function clearMatcheArray() {
     //clear cardOpend array
     JSVar.cardOpend = [];
 }
 
-function score(){
+function score() {
     //select all the stars
     const stars = document.querySelector(DOMString.stars),
           firstStar = stars.getElementsByTagName('i')[0],
@@ -138,29 +139,30 @@ function score(){
 }
 
 //Increase Moves
-function increaseMoves(){
+function increaseMoves() {
     //update the moves
     JSVar.moves++;
     $(DOMString.moves).text(JSVar.moves);
     //add singular case
-    if(JSVar.moves === 1){
+    if(JSVar.moves === 1) {
         document.querySelector(DOMString.movesString).textContent = 'Move';
-    }else{
+    } else {
         document.querySelector(DOMString.movesString).textContent = 'Moves';
     }
 }
 
 //start new game
-function startNewGame(){
+function startNewGame() {
     //clear all cards
     document.querySelector(DOMString.container).innerHTML = '';
     //creat new deck of random cards
     creatUI();
 
-    /* Not Necessary any more while i'm using location.reload() to restart the game
-    *
     //set moves string to zero
     document.querySelector(DOMString.moves).textContent = 0;
+
+    /* Not Necessary any more while i'm using location.reload() to restart the game
+    *
     //remove all classes
     $(DOMString.card).removeClass('open show shake match pulse flipInY');
     //reset all variables
@@ -173,13 +175,13 @@ function startNewGame(){
 }
 
 //increase matches
-function matchIsFound(){
+function matchIsFound() {
     JSVar.matches++;
 }
 
-function matchesCheck(){
-    if(JSVar.cardOpend.length === 2){
-        if(JSVar.cardOpend[0][0].firstChild.classList[1] === JSVar.cardOpend[1][0].firstChild.classList[1]){
+function matchesCheck() {
+    if(JSVar.cardOpend.length === 2) {
+        if(JSVar.cardOpend[0][0].firstChild.classList[1] === JSVar.cardOpend[1][0].firstChild.classList[1]) {
             JSVar.cardOpend[0][0].classList.add('match', 'pulse');
             JSVar.cardOpend[1][0].classList.add('match', 'pulse');
 
@@ -200,7 +202,7 @@ function matchesCheck(){
             clearMatcheArray();
 
             //reclose all opend cards
-            setTimeout(function(){
+            setTimeout(function() {
 
                 //Remove opendCards classes
                 removeClasses();
@@ -208,13 +210,13 @@ function matchesCheck(){
                 //set cardOpend array to empty
                 clearMatcheArray();
             }, 500);
-        }else{
+        } else {
             //add wrong class to opend cards
             JSVar.cardOpend[0][0].classList.add('shake');
             JSVar.cardOpend[1][0].classList.add('shake');
 
             //reclose all opend cards
-            setTimeout(function(){
+            setTimeout(function() {
 
                 //Remove opendCards classes
                 removeClasses();
@@ -240,14 +242,14 @@ function restartGame() {
 }
 
 //Remove Classes
-function removeClasses(){
+function removeClasses() {
     $(DOMString.card).removeClass('open show shake flipInY pulse');
 }
 
 //creat countDown timer
-function countDown(duration, display){
+function countDown(duration, display) {
     JSVar.timer = duration;
-    var timerFunction = setInterval(function(){
+    var timerFunction = setInterval(function() {
             JSVar.minutes = parseInt(JSVar.timer / 60, 10);
             JSVar.seconds = parseInt(JSVar.timer % 60, 10);
 
@@ -256,9 +258,9 @@ function countDown(duration, display){
 
             display.textContent = JSVar.minutes + ':' + JSVar.seconds;
 
-            if(--JSVar.timer < 0 || JSVar.matches === 8){
+            if(--JSVar.timer < 0 || JSVar.matches === 8) {
                 clearInterval(timerFunction);
-                if(--JSVar.timer < 0){
+                if(--JSVar.timer < 0) {
                     gameOver();
                 }
             }
@@ -290,7 +292,7 @@ startTimer();
 
 
 //TOTEST MY WORK
-function test(){
+function test() {
     console.log('test');
 }
 

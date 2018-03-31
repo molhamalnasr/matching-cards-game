@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"  />
     <title>Matching Game</title>
-    <meta name="description" content="">
+    <meta name="description" content="Matching card Game">
     <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
-    <!-- Add animate.css -->
-    <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/app.css">
     <script src="js/jquery-3.3.1.min.js"></script>
 </head>
@@ -39,20 +38,27 @@
         </header>
 
         <section class="score-panel">
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        	</ul>
+        	<div class="flex2">
+                <ul class="stars">
+        		  <li><i class="fa fa-star"></i></li>
+        		  <li><i class="fa fa-star"></i></li>
+        		  <li><i class="fa fa-star"></i></li>
+        	   </ul>
+                <span class="moves">3</span> <span class="movesString">Moves</span>
+            </div>
 
-        	<span class="moves">3</span> <span class="movesString">Moves</span>
+            <div class="flex1">
+                <!-- Timer div -->
+                <div class="timerContainer"><span id="timer">01:00</span></div>
+            </div>
 
-            <div class="restart">
-        		<i class="fa fa-repeat"></i>
-        	</div>
+            <div class="flex1">
+                <div class="restart">
+        		  <i class="fa fa-repeat"></i>
+        	    </div>
+            </div>
 
-            <!-- Timer div -->
-            <div class="timerContainer"><span id="timer">01:00</span></div>
+
 
         </section>
 
