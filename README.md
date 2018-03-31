@@ -6,7 +6,7 @@ This project one of nanodegree projects in [Udacity](https://eu.udacity.com/) Pl
 
 This a simple matching game. the goal is to match all the cards in less than one Minute
 
-You can try the game from [here]()
+You can try the game from [here](https://molhamalnasr.github.io/matching-cards-game/)
 
 <hr>
 
