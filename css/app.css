@@ -204,10 +204,6 @@ a:link:visited {
     display: flex;
 }
 
-.flex2 {
-    flex: 2;
-}
-
 .flex1 {
     flex: 1;
 }
@@ -244,7 +240,7 @@ a:link:visited {
 
 @media only screen and (max-width: 450px) {
     .score-panel {
-        width: 90%;
+        width: 300px;
     }
 
     .deck {
@@ -258,11 +254,15 @@ a:link:visited {
         width: 50px;
         margin-bottom: 17px;
     }
+
+    .flex2 {
+        flex: 2;
+    }
 }
 
 @media only screen and (min-width: 451px) and (max-width: 750px) {
     .score-panel {
-        width: 90%;
+        width: 440px;
     }
 
     .deck {
