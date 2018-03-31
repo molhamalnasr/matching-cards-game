@@ -86,7 +86,7 @@ function gameIsStarted(){
     //flip Card when user click
     $(DOMString.card).on('click', function(){
         //ADD Calsses
-        $(this).toggleClass('open show');
+        $(this).toggleClass('open show flipInY');
         //push the opend card into the Array
         JSVar.cardOpend.push($(this));
         //Start The game
@@ -149,7 +149,7 @@ function startNewGame(){
     //set moves string to zero
     document.querySelector(DOMString.moves).textContent = 0;
     //remove all classes
-    $(DOMString.card).removeClass('open show wrong match');
+    $(DOMString.card).removeClass('open show shake match');
     //reset all variables
     JSVar.moves = 0;
     JSVar.matches = 0;
@@ -165,8 +165,8 @@ function matchIsFound(){
 function matchesCheck(){
     if(JSVar.cardOpend.length === 2){
         if(JSVar.cardOpend[0][0].firstChild.classList[1] === JSVar.cardOpend[1][0].firstChild.classList[1]){
-            JSVar.cardOpend[0][0].classList.add('match');
-            JSVar.cardOpend[1][0].classList.add('match');
+            JSVar.cardOpend[0][0].classList.add('match', 'pulse');
+            JSVar.cardOpend[1][0].classList.add('match', 'pulse');
 
             //Increase Matches
             matchIsFound();
@@ -185,13 +185,13 @@ function matchesCheck(){
             clearMatcheArray();
         }else{
             //add wrong class to opend cards
-            JSVar.cardOpend[0][0].classList.add('wrong');
-            JSVar.cardOpend[1][0].classList.add('wrong');
+            JSVar.cardOpend[0][0].classList.add('shake');
+            JSVar.cardOpend[1][0].classList.add('shake');
 
             //reclose all opend cards
             setTimeout(function(){
-                $(DOMString.card).removeClass('open show wrong');
-                $(DOMString.card).removeClass('open show wrong');
+                $(DOMString.card).removeClass('open show shake flipInY pulse');
+                $(DOMString.card).removeClass('open show shake flipInY pulse');
 
                 //set cardOpend array to empty
                 JSVar.cardOpend = [];
