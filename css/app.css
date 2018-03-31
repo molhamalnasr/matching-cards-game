@@ -111,12 +111,33 @@ h1 {
     cursor: pointer;
 }
 
+/*
+ *
+ *My style
+ *
+*/
+
 a {
     text-decoration: none;
 }
 
 a:link:visited {
     color: #fff;
+}
+
+@-webkit-keyframes popup {
+    0% { opacity: 0; -webkit-transform: scale(0.5); }
+    100% { opacity: 1; -webkit-transform: scale(1); }
+}
+
+@-moz-keyframes popup {
+    0% { opacity: 0; -webkit-transform: scale(0.5); }
+    100% { opacity: 1; -webkit-transform: scale(1); }
+}
+
+@keyframes popup {
+    0% { opacity: 0; -webkit-transform: scale(0.5); }
+    100% { opacity: 1; -webkit-transform: scale(1); }
 }
 
 .winner,
@@ -137,21 +158,6 @@ a:link:visited {
     -moz-animation-duration: 0.5s;
     animation-name: popup;
     animation-duration: 0.5s;
-}
-
-@-webkit-keyframes popup {
-    0% { opacity: 0; -webkit-transform: scale(0.5); }
-    100% { opacity: 1; -webkit-transform: scale(1); }
-}
-
-@-moz-keyframes popup {
-    0% { opacity: 0; -webkit-transform: scale(0.5); }
-    100% { opacity: 1; -webkit-transform: scale(1); }
-}
-
-@keyframes popup {
-    0% { opacity: 0; -webkit-transform: scale(0.5); }
-    100% { opacity: 1; -webkit-transform: scale(1); }
 }
 
 #title,
