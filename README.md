@@ -1,6 +1,7 @@
 # Memory Game Project
 This project one of nanodegree projects in [Udacity](https://eu.udacity.com/) Platform
 <hr>
+
 ### How to play the Game
 
 This a simple matching game. the goal is to match all the cards in less than one Minute
