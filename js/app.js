@@ -88,6 +88,12 @@ function creatUI() {
 function gameIsStarted() {
     //flip Card when user click
     $(DOMString.card).on('click', function() {
+
+        //prevent the user frome clicking on the same card twice
+        if($(this).hasClass('open show')) {
+            return;
+        }
+
         //ADD Calsses
         $(this).toggleClass('open show flipInY');
         //push the opend card into the Array
@@ -162,18 +168,6 @@ function startNewGame() {
 
     //set moves string to zero
     document.querySelector(DOMString.moves).textContent = 0;
-
-    /* Not Necessary any more while i'm using location.reload() to restart the game
-    *
-    //remove all classes
-    $(DOMString.card).removeClass('open show shake match pulse flipInY');
-    //reset all variables
-    JSVar.moves = 0;
-    JSVar.matches = 0;
-    JSVar.cardOpend = [];
-    JSVar.gameIsStarted = false;
-    *
-    */
 }
 
 //increase matches
