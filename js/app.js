@@ -149,7 +149,7 @@ function startNewGame(){
     //set moves string to zero
     document.querySelector(DOMString.moves).textContent = 0;
     //remove all classes
-    $(DOMString.card).removeClass('open show shake match');
+    $(DOMString.card).removeClass('open show shake match pulse flipInY');
     //reset all variables
     JSVar.moves = 0;
     JSVar.matches = 0;
