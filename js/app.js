@@ -115,6 +115,8 @@ function isWinner() {
 function gameOver() {
     //display the loser DIV
     $(DOMString.loser).show();
+    //tp prevent the player from hiding the game over div and contiue play
+    $(DOMString.card).off('click');
 }
 
 function clearMatcheArray() {
