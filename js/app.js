@@ -266,4 +266,4 @@ function test(){
 //TODO
 //DON'T FORGET FIX MORE THAN TWO CLICKS IN LESS THAN 1 SECOUND
 //FIX THE ANIMATION THING
-//Prevent click on matched cards
+//Prevent click on matched cards (DONE)
