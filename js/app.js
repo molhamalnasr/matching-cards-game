@@ -171,6 +171,10 @@ function matchesCheck(){
             //Increase Matches
             matchIsFound();
 
+            //Stop event listener on matched cards
+            $(JSVar.cardOpend[0][0]).off('click');
+            $(JSVar.cardOpend[1][0]).off('click');
+
             //Increase Moves
             increaseMoves();
 
