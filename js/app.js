@@ -46,6 +46,7 @@ const DOMString = {
     container: '.deck',
     card: '.card',
     winner: '.winner',
+    loser: '.lose',
     stars: '.stars',
     moves: '.moves',
     movesString: '.movesString',
@@ -103,6 +104,10 @@ function isWinner(){
         $(DOMString.summaryMoves).text(JSVar.moves);
         $(DOMString.summaryScore).text(JSVar.summaryRate);
     }
+}
+
+function gameOver(){
+    $(DOMString.loser).show();
 }
 
 function clearMatcheArray(){
@@ -218,6 +223,9 @@ function countDown(duration, display){
 
             if(--JSVar.timer < 0 || JSVar.matches === 8){
                 clearInterval(timerFunction);
+                if(--JSVar.timer < 0){
+                    gameOver();
+                }
             }
 
         }, 1000);
